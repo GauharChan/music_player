@@ -15,10 +15,10 @@ export default {
   data () {
     return {
       lists:[
-        {name:'陈奕迅 eason and the duo band - 我们万岁',src:require('./music/陈奕迅 eason and the duo band - 我们万岁.mp3'),mm:false,id:0},
+        {name:'陈奕迅 eason and the duo band - 我们万岁',src:require('./music/陈奕迅 eason and the duo band - 我们万岁.mp3'),mm:true,id:0},
         {name:'陈奕迅 eason and the duo band - 8：15pm (Intro)',src:require('./music/陈奕迅 eason and the duo band - 8：15pm (Intro).mp3'),mm:false,id:1},
         {name:'陈奕迅 eason and the duo band - Devotion (Interlude)',src:require('./music/陈奕迅 eason and the duo band - Devotion (Interlude).mp3'),id:2},
-        {name:'陈奕迅 eason and the duo band - Originality  (Interl',src:require('./music/陈奕迅 eason and the duo band - Originality  (Interl.mp3'),id:3},
+        {name:'陈奕迅 eason and the duo band - 与你常在',src:require('./music/陈奕迅 eason and the duo band - 与你常在.mp3'),id:3},
         {name:'陈奕迅 eason and the duo band - R U N',src:require('./music/陈奕迅 eason and the duo band - R U N.mp3'),id:4},
         {name:'陈奕迅 eason and the duo band - Unity (Interlude)',src:require('./music/陈奕迅 eason and the duo band - Unity (Interlude).mp3'),id:5},
         {name:'陈奕迅 eason and the duo band - 蠢',src:require('./music/陈奕迅 eason and the duo band - 蠢.mp3'),id:6},
@@ -29,11 +29,25 @@ export default {
         {name:'陈奕迅 eason and the duo band - 可一可再',src:require('./music/陈奕迅 eason and the duo band - 可一可再.mp3'),id:11},
         {name:'陈奕迅 eason and the duo band - 龙舌兰',src:require('./music/陈奕迅 eason and the duo band - 龙舌兰.mp3'),id:12},
         {name:'陈奕迅 eason and the duo band - 破坏王',src:require('./music/陈奕迅 eason and the duo band - 破坏王.mp3'),id:13},
+        {name:'陈奕迅 eason and the duo band - Originality  (Interl',src:require('./music/陈奕迅 eason and the duo band - Originality  (Interl.mp3'),id:14},
         
       ],
       music:require('./music/陈奕迅 eason and the duo band - 我们万岁.mp3'),
       audioId:0
     }
+  },
+  created () {
+    console.log(`
+    Author:Gauhar
+⊂_ヽ
+　 ＼＼  Λ＿Λ
+　　 ＼( 'ㅅ' )
+　　　 >　⌒ヽ
+　　　/ 　 へ＼
+　　 /　　/　＼＼
+　　 ﾚ　ノ　　 ヽ_つ
+　　/　/
+　 /　/|`);
   },
   methods: {
     change(index){
@@ -49,12 +63,24 @@ export default {
     },
     // 自动播放下一首
     next(){
+      
       let that = this
       let tt = parseInt(that.audioId);
-        if(tt == that.lists[tt].id){
+        if(tt == that.lists[tt].id && tt < that.lists.length-1){
           tt += 1
           that.music = that.lists[tt].src
-          that.audioId +=1
+          that.audioId +=1 //改变tt的值，否则tt的值一直是0
+          for (let i = 0; i < this.lists.length; i++) {
+            if(tt == i){
+              this.lists[tt].mm = true;
+            }else{
+              this.lists[i].mm = false;
+            }
+          }
+      }else{
+          tt = 0
+          that.audioId = 0
+          that.music = that.lists[tt].src
           for (let i = 0; i < this.lists.length; i++) {
             if(tt == i){
               this.lists[tt].mm = true;
@@ -83,11 +109,21 @@ p{
   padding-left: 10px;
   
 }
+p:hover{
+  cursor: pointer;
+}
 .pAnimate{
   animation: bounceln 1s;
 }
 .pp{
   animation: pulse 1s;
   color: rgb(231, 133, 5);
+}
+@media screen and (min-width:480px){
+  .content{
+    width: 30%;
+    text-align: left;
+    padding: 0 25px;
+  }
 }
 </style>
