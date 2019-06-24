@@ -1,9 +1,6 @@
 # 这是一个简单的音乐播放器
-## 如果涉及到版权问题，本人不负全责，因为专辑是我自己买的，对于歌曲文件的使用是我私人的事情
-### 不知道Github什么原因，有两首歌不可以上传。所以需要去我的网盘下载，下载地址：
-### https://pan.baidu.com/s/1iUbuIowXy7F9iqumO9KOBw
-### 提取码：zaff
-#### 记得把歌下载下来，然后放在src->components->music目录下
+## 本项目不作商业用途，只因太喜欢Eason
+#### 
 # music_player
 
 > 
